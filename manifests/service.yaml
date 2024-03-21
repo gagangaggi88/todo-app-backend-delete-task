@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: deletetaskservice
+  namespace: gagan
+spec:
+  type: ClusterIP
+  selector:
+    app: delete-task
+  ports:
+  - port: 80
+    targetPort: 8000

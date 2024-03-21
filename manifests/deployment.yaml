@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: delete-task
+  namespace: gagan
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: delete-task
+  template:
+    metadata:
+      labels:
+        app: delete-task
+    spec:
+      containers:
+      - name: delete-task
+        image: devopsinsiders/delete-task
+        ports:
+        - containerPort: 8000
+        env:
+          - name: CONNECTION_STRING
+            valueFrom:
+              secretKeyRef:
+                name: deletesecret
+                key: password1
